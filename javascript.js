@@ -1,33 +1,30 @@
 var searchBtn = document.querySelector('#user-form');
+var weatherContainer = document.querySelector('#list-group')
+var city = document.querySelector("#form-input")
 
-$(searchBtn).on('onclick', function () {
-    var txt = ($(this).text());
-    alert("Your Favourite Sports is " + txt);
-});
-
+//on searchbtn click run input field//
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
-    alert('City was not found');
+    getWeatherData();
+    if (getWeatherData == null)
+        alert('City was not found');
 };
 
-var buttonClickHandler = function (event) {
-    // What is `event.target` referencing?
-    // TODO: Write your answer here
-    var previousSearch = event.target.getAttribute('data-previousSearch');
 
-    // Why is this `if` block in place?
-    // TODO: Write your answer here
+// click on previous city search and run same function with that input// 
+var buttonClickHandler = function (event) {
+    var previousSearch = event.target.getAttribute('data-search');
+
     if (previousSearch) {
         getpreviousSearch(previousSearch);
-
-        repoContainerEl.textContent = '';
+        weatherContainer.textContent = '';
     }
 };
 
-
+//Fetch the weather data ------------------api key 2383d7893c8a1fe82e9a615e9b9086f9 //
 var getWeatherData = function (City) {
-    var apiUrl = '' + City + '';
+    var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + City + '&limit=3&appid=2383d7893c8a1fe82e9a615e9b9086f9';
 
     fetch(apiUrl)
         .then(function (response) {
@@ -47,8 +44,7 @@ var getWeatherData = function (City) {
 };
 
 var getpreviousSearch = function (previousSearch) {
-
-    var apiUrl = '' + previousSearch + '';
+    var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + previousSearch + '&limit=3&appid=2383d7893c8a1fe82e9a615e9b9086f9';
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -62,44 +58,38 @@ var getpreviousSearch = function (previousSearch) {
 };
 
 
-
-var displayWeather = function (repos, searchTerm) {
-    if (repos.length === 0) {
-        repoContainerEl.textContent = 'No repositories found.';
-        // What would happen if there was no `return;` here?
-        // TODO: Write your answer here
+var displayWeather = function (city, searchTerm) {
+    if (city.length === 0) {
+        weatherContainer.textContent = 'No weather data found.';
         return;
     }
 
-    repoSearchTerm.textContent = searchTerm;
+    city.textContent = searchTerm;
 
-    for (var i = 0; i < repos.length; i++) {
-        // What is the result of this string concatenation?
-        // TODO: Write your answer here
-        var repoName = repos[i].owner.login + '/' + repos[i].name;
-
-        var repoEl = document.createElement('div');
-        repoEl.classList = 'list-item flex-row justify-space-between align-center';
+    for (var i = 0; i < city.length; i++) {
+        var weatherEl = document.createElement('div');
+        weatherEl.classList = 'list-item flex-row justify-space-between align-center';
 
         var titleEl = document.createElement('span');
-        titleEl.textContent = repoName;
+        titleEl.textContent = cityName;
 
-        repoEl.appendChild(titleEl);
+        cityName.appendChild(titleEl);
 
-        var statusEl = document.createElement('span');
-        statusEl.classList = 'flex-row align-center';
+        var weatherData = document.createElement('span');
+        weatherData.classList = 'flex-row align-center';
 
-        if (repos[i].open_issues_count > 0) {
-            statusEl.innerHTML =
-                "<i class='fas fa-times status-icon icon-danger'></i>" + repos[i].open_issues_count + ' issue(s)';
+        if (city[i].open_issues_count > 0) {
+            weatherData.innerHTML =
+                "<i class='fas fa-times status-icon icon-danger'></i>" + city[i].open_issues_count + ' issue(s)';
         } else {
-            statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
+            weatherData.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
         }
 
-        repoEl.appendChild(statusEl);
-
-        repoContainerEl.appendChild(repoEl);
+        //this is where the weather data is added to the DOM//
+        cityName.appendChild(weatherData);
+        weatherContainer.appendChild(cityName);
     }
 };
+
 
 searchBtn.addEventListener('submit', formSubmitHandler);
