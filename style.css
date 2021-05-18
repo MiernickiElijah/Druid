@@ -1,9 +1,9 @@
 :root {
-  --primary: #ccdad1;
+  --primary: #ffff;
   --secondary: #9caea9;
-  --tertiary: #788585;
-  --light-dark: #6f6866;
-  --dark: #38302e;
+  --tertiary: hsl(221, 83%, 45%);
+  --light-dark: hsl(221, 83%, 45%);
+  --dark: #049db8;
   --border-radius: 0.3rem;
 }
 
@@ -92,10 +92,18 @@ p {
   box-shadow: 2px 2px var(--dark);
 }
 
+.previous {
+  background-color: grey;
+  box-shadow: 2px 2px var(--dark);
+  color: black;
+  font-weight: bold;
+}
+
 .hero {
   padding: 3% 4%;
-  background-color: var(--dark);
+  background-image: linear-gradient(to right bottom, #049db8 , purple);
   color: var(--primary);
+  text-align: center;
 }
 
 .hero p {
@@ -109,7 +117,6 @@ p {
   padding: 0 10px;
   display: inline-block;
   border-radius: var(--border-radius);
-  box-shadow: 6px 5px var(--light-dark);
 }
 
 .list-group {
@@ -148,7 +155,6 @@ p {
 /* CARDS */
 .card {
   margin: 0 0 20px 0;
-  border: 3px solid var(--dark);
   border-radius: var(--border-radius);
 }
 

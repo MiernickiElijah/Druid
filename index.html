@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Weather App</title>
 </head>
 
@@ -18,36 +18,39 @@
         <h1 class="app-title">Weather Dashboard</h1>
     </header>
 
+    <div class="container-fluid">
+        <main class="flex-row justify-space-between">
 
-    <main class="flex-row justify-space-between">
-
-        <div class="col col-12 col-md-4">
             <!--SEARCH SECTION-->
-            <div class="card">
-                <h3 class="card-header">Search for a City</h3>
-                <form id="user-form" class="card-body">
-                    <!--for should be by city-->
-                    <label class="form-label" for="username">search</label>
-                    <!--make the input changes and id's different-->
-                    <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-                    <button type="submit" class="btn">Search</button>
-                </form>
+            <div class="col-12 col-md-3 col-xl-4 bd-sidebar">
+                <div class="card">
+                    <h3 class="card-header">Search for a City</h3>
+                    <form id="user-form" class="card-body">
+                        <input name="username" id="username" type="text" autofocus="true" class="form-input" />
+                        <button type="submit" class="btn">Search</button>
+                    </form>
+                </div>
+
+                <!--PREVIOUS SEARCH SECTION-->
+                <div class="card">
+                    <div class="btn-group-vertical btn-lg btn-block" role="group" aria-label="Vertical Button group">
+                        <button type="button"
+                            class="btn btn-primary btn-lg btn-block previous"><span>CITY</span></button>
+                    </div>
+                </div>
             </div>
 
-            <!--PREVIOUS SEARCH SECTION-->
-            <div class="card">
+            <!-- current Weather display by city-->
+            <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+                <h2 class="subtitle">Showing Weather for: <span id="city"></span></h2>
+                <div id="weather-container" class="list-group"></div>
+                <h2 class="subtitle">5 Day Forecast:</h2>
+                <div id="weather-container" class="list-group"></div>
             </div>
-        </div>
+        </main>
 
-
-        <div class="col col-12 col-md-8">
-            <h2 class="subtitle">Showing Repositories for: <span id="repo-search-term"></span></h2>
-            <!-- TODO: Why is this `<div>` empty? What goes in here? -->
-            <div id="repos-container" class="list-group"></div>
-        </div>
-    </main>
-
-    <script src="\javascriptjs.js"></script>
+        <script src="javascript.js"></script>
+    </div>
 </body>
 
 </html>

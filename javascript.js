@@ -1,13 +1,6 @@
-var userFormEl = document.querySelector('#user-form');
-var formatBtn = document.querySelector('.dropdown');
-var nameInputEl = document.querySelector('#username');
-var repoContainerEl = document.querySelector('#repos-container');
-var repoSearchTerm = document.querySelector('#repo-search-term');
+var searchBtn = document.querySelector('#user-form');
 
-
-// console.log($.onclick(formatBtn).value)
-
-$('.dropdown-menu a').on('onclick', function () {
+$(searchBtn).on('onclick', function () {
     var txt = ($(this).text());
     alert("Your Favourite Sports is " + txt);
 });
@@ -15,34 +8,26 @@ $('.dropdown-menu a').on('onclick', function () {
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
-    var username = nameInputEl.value.trim();
-
-    if (username) {
-        getUserRepos(username);
-
-        repoContainerEl.textContent = '';
-        nameInputEl.value = '';
-    } else {
-        alert('Please enter a GitHub username');
-    }
+    alert('City was not found');
 };
 
 var buttonClickHandler = function (event) {
     // What is `event.target` referencing?
     // TODO: Write your answer here
-    var format = event.target.getAttribute('data-format');
+    var previousSearch = event.target.getAttribute('data-previousSearch');
 
     // Why is this `if` block in place?
     // TODO: Write your answer here
-    if (format) {
-        getFeaturedRepos(format);
+    if (previousSearch) {
+        getpreviousSearch(previousSearch);
 
         repoContainerEl.textContent = '';
     }
 };
 
-var getUserRepos = function (user) {
-    var apiUrl = 'https://api.github.com/users/' + user + '/repos';
+
+var getWeatherData = function (City) {
+    var apiUrl = '' + City + '';
 
     fetch(apiUrl)
         .then(function (response) {
@@ -50,25 +35,25 @@ var getUserRepos = function (user) {
                 console.log(response);
                 response.json().then(function (data) {
                     console.log(data);
-                    displayRepos(data, user);
+                    displayWeather(data, city);
                 });
             } else {
                 alert('Error: ' + response.statusText);
             }
         })
         .catch(function (error) {
-            alert('Unable to connect to library of congress');
+            alert('Unable to connect to One Call');
         });
 };
 
-var getFormat = function (format) {
+var getpreviousSearch = function (previousSearch) {
 
-    var apiUrl = '' + format + '';
+    var apiUrl = '' + previousSearch + '';
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                displayRepos(data.items, format);
+                displayWeather(data.items, previousSearch);
             });
         } else {
             alert('Error: ' + response.statusText);
@@ -76,7 +61,9 @@ var getFormat = function (format) {
     });
 };
 
-var displayRepos = function (repos, searchTerm) {
+
+
+var displayWeather = function (repos, searchTerm) {
     if (repos.length === 0) {
         repoContainerEl.textContent = 'No repositories found.';
         // What would happen if there was no `return;` here?
@@ -115,7 +102,4 @@ var displayRepos = function (repos, searchTerm) {
     }
 };
 
-userFormEl.addEventListener('submit', formSubmitHandler);
-
-
-formatBtn.addEventListener('click', buttonClickHandler);
+searchBtn.addEventListener('submit', formSubmitHandler);
