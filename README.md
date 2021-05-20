@@ -22,5 +22,5 @@ This is an up to date weather dashboard
 https://mycolor.space/gradient3?ori=to+right&hex=%23049DB8&hex2=%231D1DC0&hex3=%23A60082&submit=submit
 https://getbootstrap.com/docs/4.1/components/buttons/
 https://getbootstrap.com/docs/4.0/components/card/
-
- 
+https://openweathermap.org/api/one-call-api
+https://www.w3schools.com/jquery/jquery_dom_get.asp
