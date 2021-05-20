@@ -152,6 +152,11 @@ p {
   color: rgb(29, 153, 255);
 }
 
+#weather-container1 {
+ background-image: linear-gradient(to right bottom, #049db8 , purple);;
+    padding: 10px;
+    align-content: space-between;
+}
 
 /* CARDS */
 .card {
