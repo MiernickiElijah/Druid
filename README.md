@@ -24,3 +24,5 @@ https://getbootstrap.com/docs/4.1/components/buttons/
 https://getbootstrap.com/docs/4.0/components/card/
 https://openweathermap.org/api/one-call-api
 https://www.w3schools.com/jquery/jquery_dom_get.asp
+https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript
+https://www.w3schools.com/jquery/jquery_css.asp

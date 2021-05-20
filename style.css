@@ -152,18 +152,6 @@ p {
   color: rgb(29, 153, 255);
 }
 
-.uviBad {
-  background-color: red;
-  color: #ffff;
-}
-.uviGood {
-  background-color: seagreen;
-  color: #ffff;
-}
-.uviMod {
-  background-color: orange;
-  color: #ffff;
-}
 
 /* CARDS */
 .card {

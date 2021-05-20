@@ -55,12 +55,15 @@ var getWeatherData = function (city) {
                                 $("#wind").text(data.current.wind_speed + " MPH");
                                 $("#hum").text(data.current.humidity + "%");
                                 $("#uvi").text(data.current.uvi);
+                                //change uvi with value//
+                                if ((data.current.uvi) <= 7 && (data.current.uvi) > 3) {
+                                    $("#uvi").css({ "background-color": "orange", "color": "white", "border-radius": "5px", "padding": "10px" });
+                                } else if ((data.current.uvi) <= 3) {
+                                    $("#uvi").css({ "background-color": "green", "color": "white", "border-radius": "5px", "padding": "10px" });
+                                } else $("#uvi").css({ "background-color": "red", "color": "white", "border-radius": "5px", "padding": "10px" });
+                                //5 day weather forecast//
 
-                                if ((data.current.uvi).value <= 7) {
-                                    $(".uvi").addClass($("uviMod"));
-                                } if ((data.current.uvi).value <= 3) {
-                                    $(".uvi").addClass($("uviGood"));
-                                } else $(".uvi").addClass($("uviBad"));
+
 
                             })
                         }
@@ -71,6 +74,13 @@ var getWeatherData = function (city) {
             }
         })
 };
+
+
+
+
+
+
+
 
 // var getPreviousSearch = function (previousSearch) {
 //     var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + previousSearch + '&limit=3&appid=2383d7893c8a1fe82e9a615e9b9086f9';
