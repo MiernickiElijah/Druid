@@ -26,3 +26,4 @@ https://openweathermap.org/api/one-call-api
 https://www.w3schools.com/jquery/jquery_dom_get.asp
 https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript
 https://www.w3schools.com/jquery/jquery_css.asp
+https://www.w3schools.com/jquery/html_addclass.asp

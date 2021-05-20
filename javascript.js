@@ -37,7 +37,7 @@ var getWeatherData = function (city) {
                                 const humanDateFormat = dateObject.toLocaleDateString();
                                 //write weather data and icon to DOM//
                                 $("#date").text("(" + humanDateFormat + ")");
-                                $("#weatherIcon").text(data.current.weather[0].icon); ///////////why no work?/////////
+                                $("#weatherIcon").attr("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png");
                                 $("#temp").text(data.current.temp + "\u00B0 F");
                                 $("#wind").text(data.current.wind_speed + " MPH");
                                 $("#hum").text(data.current.humidity + "%");
@@ -53,7 +53,7 @@ var getWeatherData = function (city) {
                                 const milliseconds1 = unixTimeStamp1 * 1000
                                 const dateObject1 = new Date(milliseconds1);
                                 const humanDateFormat1 = dateObject1.toLocaleDateString();
-                                $("#weatherIcon1").text(data.daily[0].weather[0].icon);
+                                $("#weatherIcon1").attr("src", "http://openweathermap.org/img/wn/" + data.daily[0].weather[0].icon + "@2x.png");
                                 $("#date1").text(humanDateFormat1);
                                 $("#temp1").text(data.daily[0].temp.day + "\u00B0 F");
                                 $("#wind1").text(data.daily[0].wind_speed + " MPH");
@@ -63,7 +63,7 @@ var getWeatherData = function (city) {
                                 const milliseconds2 = unixTimeStamp2 * 1000
                                 const dateObject2 = new Date(milliseconds2);
                                 const humanDateFormat2 = dateObject2.toLocaleDateString();
-                                $("#weatherIcon2").text(data.daily[1].weather[0].icon);
+                                $("#weatherIcon2").attr("src", "http://openweathermap.org/img/wn/" + data.daily[1].weather[0].icon + "@2x.png");
                                 $("#date2").text(humanDateFormat2);
                                 $("#temp2").text(data.daily[1].temp.day + "\u00B0 F");
                                 $("#wind2").text(data.daily[1].wind_speed + " MPH");
@@ -73,7 +73,7 @@ var getWeatherData = function (city) {
                                 const milliseconds3 = unixTimeStamp3 * 1000
                                 const dateObject3 = new Date(milliseconds3);
                                 const humanDateFormat3 = dateObject3.toLocaleDateString();
-                                $("#weatherIcon3").text(data.daily[2].weather[0].icon);
+                                $("#weatherIcon3").attr("src", "http://openweathermap.org/img/wn/" + data.daily[2].weather[0].icon + "@2x.png");
                                 $("#date3").text(humanDateFormat3);
                                 $("#temp3").text(data.daily[2].temp.day + "\u00B0 F");
                                 $("#wind3").text(data.daily[2].wind_speed + " MPH");
@@ -83,7 +83,7 @@ var getWeatherData = function (city) {
                                 const milliseconds4 = unixTimeStamp4 * 1000
                                 const dateObject4 = new Date(milliseconds4);
                                 const humanDateFormat4 = dateObject4.toLocaleDateString();
-                                $("#weatherIcon4").text(data.daily[3].weather[0].icon);
+                                $("#weatherIcon4").attr("src", "http://openweathermap.org/img/wn/" + data.daily[3].weather[0].icon + "@2x.png");
                                 $("#date4").text(humanDateFormat4);
                                 $("#temp4").text(data.daily[3].temp.day + "\u00B0 F");
                                 $("#wind4").text(data.daily[3].wind_speed + " MPH");
@@ -93,7 +93,7 @@ var getWeatherData = function (city) {
                                 const milliseconds5 = unixTimeStamp5 * 1000
                                 const dateObject5 = new Date(milliseconds5);
                                 const humanDateFormat5 = dateObject5.toLocaleDateString();
-                                $("#weatherIcon5").text(data.daily[4].weather[0].icon);
+                                $("#weatherIcon5").attr("src", "http://openweathermap.org/img/wn/" + data.daily[4].weather[0].icon + "@2x.png");
                                 $("#date5").text(humanDateFormat5);
                                 $("#temp5").text(data.daily[4].temp.day + "\u00B0 F");
                                 $("#wind5").text(data.daily[4].wind_speed + " MPH");
@@ -108,14 +108,16 @@ var getWeatherData = function (city) {
         })
 };
 
-//fix icons not appearing//
-
-//make search a button-----------make look better and append vertically//
 function createPreviousBtn(event) {
     event.preventDefault();
-    var search = $('<input type="button"/>').val(city.value);
-    $("#insertPreviousBtn").append(search).addClass("btn");
+    var search = $('<button type=“button”> ' + city.value + ' </button>').addClass("btn");
+    $("#insertPreviousBtn").append(search);
 };
+
+//rerun function for previous search//
+
+
+
 
 
 searchBtn.addEventListener('submit', formSubmitHandler);
