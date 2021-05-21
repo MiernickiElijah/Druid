@@ -16,7 +16,7 @@ This is an up to date weather dashboard
 
 
 #### link to live
-
+https://miernickielijah.github.io/Druid/
 
 ## 💡 Notes/references 
 https://mycolor.space/gradient3?ori=to+right&hex=%23049DB8&hex2=%231D1DC0&hex3=%23A60082&submit=submit
