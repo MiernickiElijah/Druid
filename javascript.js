@@ -112,6 +112,8 @@ function createPreviousBtn(event) {
     event.preventDefault();
     var search = $('<button type=“button”> ' + city.value + ' </button>').addClass("btn");
     $("#insertPreviousBtn").append(search);
+    const cityName = city.value;
+    search.click(function () { getWeatherData(cityName) });
 };
 
 //rerun function for previous search//
