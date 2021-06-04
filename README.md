@@ -1,5 +1,5 @@
 # Druid
-This is an up to date weather dashboard
+This is a live weather dashboard with current and 5 day forecast based on US city.
 
 ## Image
 ![screenshot](screenshot.png)
